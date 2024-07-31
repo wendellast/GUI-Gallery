@@ -83,6 +83,7 @@ section {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    overflow-x: auto;
 }
 
 .column {
@@ -137,6 +138,18 @@ section {
     .column {
         margin: 0 10px;
     }
+    .images {
+        width: 100vw;
+        overflow-x: scroll;
+        transform: translate(0, -50%);
+    }
+    .wrapper {
+        width: 100%;
+        height: auto;
+        position: static;
+        transform: none;
+        animation: none;
+    }
 }
 
 /* Animations */
@@ -185,6 +198,7 @@ section {
     background: #241f31;
     overflow: hidden;
 }
+
 
 .background span {
     width: 20vmin;
