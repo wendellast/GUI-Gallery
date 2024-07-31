@@ -76,12 +76,15 @@ section {
 .images {
     display: flex;
     flex-wrap: nowrap;
+    -webkit-overflow-scrolling: touch;
+    width: fit-content; /* Ajusta a largura para caber na tela */
     align-items: center;
-    width: fit-content;
+    
     height: fit-content;
     position: absolute;
     top: 50%;
     left: 50%;
+    touch-action: pan-x;
     transform: translate(-50%, -50%);
     overflow-x: auto; /* Permite rolagem horizontal */
 }
