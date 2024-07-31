@@ -197,7 +197,9 @@ section {
     left: 0;
     background: #241f31;
     overflow: hidden;
+    z-index: hidden; /* Certifique-se de que o fundo está atrás de outros elementos */
 }
+
 
 
 .background span {
