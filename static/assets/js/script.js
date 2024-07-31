@@ -93,8 +93,8 @@ function getSongTitle(song) {
 
 function loadSong(song) {
   title.innerText = getSongTitle(song);
-  audio.src = `https://github.com/wendellast/GUI-Gallery/blob/main/music/${song}.mp3?raw=true`;
-  cover.src = `https://github.com/wendellast/GUI-Gallery/blob/main/images/${song}.jpg?raw=true`;
+  audio.src = `https://github.com/wendellast/GUI-Gallery/blob/main/static/assets/music/${song}.mp3?raw=true`;
+  cover.src = `https://github.com/wendellast/GUI-Gallery/blob/main/static/assets/img/${song}.jpg?raw=true`;
 }
 
 function playSong() {
