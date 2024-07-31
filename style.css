@@ -3,13 +3,13 @@ body, html {
     padding: 0;
     background: black; /* Alterei para preto para contrastar com as imagens */
     color: white;
-    overflow: hidden;
     -webkit-overflow-scrolling: touch;
     user-select: none;
     -webkit-user-select: none;
     cursor: pointer;
     height: 100%;
     width: 100%;
+    overflow: auto; /* Permite rolagem */
 }
 
 section {
@@ -83,7 +83,7 @@ section {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    overflow-x: auto;
+    overflow-x: auto; /* Permite rolagem horizontal */
 }
 
 .column {
@@ -140,7 +140,7 @@ section {
     }
     .images {
         width: 100vw;
-        overflow-x: scroll;
+        overflow-x: auto; /* Permite rolagem horizontal */
         transform: translate(0, -50%);
     }
     .wrapper {
@@ -199,7 +199,6 @@ section {
     overflow: hidden;
     z-index: hidden; /* Certifique-se de que o fundo está atrás de outros elementos */
 }
-
 
 
 .background span {
