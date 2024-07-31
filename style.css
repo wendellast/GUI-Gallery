@@ -4,10 +4,12 @@ body, html {
     background: black; /* Alterei para preto para contrastar com as imagens */
     color: white;
     overflow: hidden;
-    -webkit-overflow-scrolling: hidden;
+    -webkit-overflow-scrolling: touch;
     user-select: none;
     -webkit-user-select: none;
     cursor: pointer;
+    height: 100%;
+    width: 100%;
 }
 
 section {
@@ -43,6 +45,8 @@ section {
     transform: translate(-50%, -50%);
     text-align: center;
     font-family: 'Open Sans', sans-serif;
+    padding: 10px;
+    box-sizing: border-box;
 }
 
 .center h1 {
@@ -116,6 +120,23 @@ section {
 
 .space {
     height: 500px;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    .center h1 {
+        font-size: 4rem;
+    }
+    .center h2 {
+        font-size: 1.5rem;
+    }
+    .image {
+        width: 200px;
+        height: 300px;
+    }
+    .column {
+        margin: 0 10px;
+    }
 }
 
 /* Animations */
