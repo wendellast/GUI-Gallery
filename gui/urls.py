@@ -1,5 +1,9 @@
-from django.urls import include, path
+from django.urls import path
 
 from . import views
 
-urlpatterns = [path("", views.PagePetIndex.as_view())]
+app_name = "gui"
+
+urlpatterns = [
+    path("", views.PagePetIndex.as_view(), name="index"), 
+    ]
