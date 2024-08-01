@@ -44,8 +44,9 @@ class PageLogin(View):
 
         return render(request, self.template_name, {'form': form})
     
+
 class RegisterView(View):
-    template_name = 'sign-in.html'
+    template_name = 'sign-up.html'
     form_class = UserRegisterForm
 
     def get(self, request, *args, **kwargs):
@@ -72,8 +73,12 @@ class RegisterView(View):
                 username=form.cleaned_data["username"],
                 password=form.cleaned_data["password1"],
             )
-            login(request, new_user)
-            return redirect("gui:index")
+            if new_user is not None:
+                login(request, new_user)
+                return redirect("gui:index")
+            else:
+                messages.error(request, "Erro na autenticação. Tente novamente.")
+                return redirect("userauths:register")
         else:
             messages.error(request, "Por favor, corrija os erros abaixo.")
 
