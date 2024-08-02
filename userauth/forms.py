@@ -6,6 +6,7 @@ from django.core.exceptions import ValidationError
 from userauth.models import User
 
 
+
 class UserRegisterForm(UserCreationForm):
     username = forms.CharField(
         widget=forms.TextInput(attrs={"placeholder": "Nome de Usuário"}),
@@ -43,17 +44,19 @@ class UserRegisterForm(UserCreationForm):
     def clean_password2(self):
         password1 = self.cleaned_data.get("password1")
         password2 = self.cleaned_data.get("password2")
+        username = self.cleaned_data.get("username", "")  # Provide a default empty string if username is not present
 
         if password1 and password2 and password1 != password2:
             raise ValidationError("As senhas não coincidem.")
 
-        if len(password1) < 8:
+        if password1 and len(password1) < 8:
             raise ValidationError("A senha deve conter no mínimo 8 caracteres.")
 
-        if self.cleaned_data["username"] in password1:
+        if username and username in password1:
             raise ValidationError("A senha é muito semelhante ao nome de usuário.")
 
         return password2
+
 
 
 class UserLoginForm(forms.Form):

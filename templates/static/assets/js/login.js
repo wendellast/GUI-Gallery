@@ -1,5 +1,5 @@
 var emailLabel = document.querySelector("#loginEmailLabel"),
-  email = document.querySelector("#loginEmail"),
+  email = document.querySelector(".loginEmail"),
   passwordLabel = document.querySelector("#loginPasswordLabel"),
   password = document.querySelector("#loginPassword"),
   showPasswordCheck = document.querySelector("#showPasswordCheck"),

@@ -4,8 +4,8 @@
 {% block title %}Sign-up{% endblock title %}
 
 {% block content %}
-<form method="POST" > 
-    {% csrf_token %}
+<form method="post" action="{% url 'userauths:register' %}" > 
+  {% csrf_token %}
     <div class="svgContainer">
       <div>
         <svg class="mySVG" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 200 200">
@@ -111,10 +111,10 @@
   
     <div class="inputGroup inputGroup1">
     <label>username</label>
-    <input type="text" name="username"  maxlength="254" />
-
+    <input type="text" name="username" class="loginEmail"  maxlength="254" />
     <label for="loginEmail"  id="loginEmailLabel">Email</label>
-    <input type="email" name="email" id="loginEmail" maxlength="254" />
+
+    <input type="email" name="email" class="loginEmail" maxlength="254" />
   
     </div>
     <div class="inputGroup inputGroup2">
@@ -130,6 +130,7 @@
       </label>
     </div>
     <div class="inputGroup inputGroup3">
+      
       <button id="login" type="submit">Entra</button>
     </div>
     {% if form.non_field_errors %}
@@ -147,7 +148,7 @@
   </form>
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/TweenMax.min.js"></script>
-  <script src="//s3-us-west-2.amazonaws.com/s.cdpn.io/16327/MorphSVGPlugin.min.js?r=182"></script>
+  
   
   
 {% endblock content %}
