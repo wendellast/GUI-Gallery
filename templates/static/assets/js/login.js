@@ -1,7 +1,7 @@
 var emailLabel = document.querySelector("#loginEmailLabel"),
   email = document.querySelector(".loginEmail"),
   passwordLabel = document.querySelector("#loginPasswordLabel"),
-  password = document.querySelector("#loginPassword"),
+  password = document.querySelector(".loginPassword"),
   showPasswordCheck = document.querySelector("#showPasswordCheck"),
   showPasswordToggle = document.querySelector("#showPasswordToggle"),
   mySVG = document.querySelector(".svgContainer"),
