@@ -47,6 +47,10 @@ section {
     font-family: 'Open Sans', sans-serif;
     padding: 10px;
     box-sizing: border-box;
+    margin: 0 80rem;
+    width: 900px;
+    height: 900px;
+    z-index: 1;
 }
 
 .center h1 {

@@ -1,26 +1,27 @@
 {% extends "base.html" %} {% block title %} Adicionar Imagem {% endblock title %}
 {% block content %}
-    <div class="rowContainer">
-        <div id="newBookDiv">
-            <h2>Cadastra Imagem</h2>
-            <form id="newBookForm" action="" method="POST" enctype="multipart/form-data">
-                {% csrf_token %}
-                <label for="titleInp">Título:</label>
-                <input type="text" id="titleInp" name="title" placeholder="Titulo" required>
+        <div class="rowContainer">
+            <div id="newBookDiv">
+                <h2>Cadastra Imagem</h2>
+                <form id="newBookForm" action="" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <label for="titleInp">Título:</label>
+                    <input type="text" id="titleInp" name="title" placeholder="Titulo" required>
 
-                <label for="descriptionInp">Descrição:</label>
-                <textarea id="descriptionInp" name="description"
-                placeholder="Descricao" required rows="4" style="resize: vertical;"></textarea>
+                    <label for="descriptionInp">Descrição:</label>
+                    <textarea id="descriptionInp" name="description"
+                    placeholder="Descricao" required rows="4" style="resize: vertical;"></textarea>
 
-                <label for="imageInp">Imagem</label>
-                <input type="file" id="imageInp" name="image">
+                    <label for="imageInp">Imagem</label>
+                    <input type="file" id="imageInp" name="image">
 
-                <div id="addBtnsNavegation">
-                    <button type="submit" id="addBook">Adicionar</button>
-                    <button id="cancelBook">Cancelar</button>
-                </div>
-            </form>
+                    <div id="addBtnsNavegation">
+                        <button type="submit" id="addBook">Adicionar</button>
+                        <button id="cancelBook">Cancelar</button>
+                    </div>
+                </form>
+            </div>
+
         </div>
-
-    </div>
+        
 {% endblock content %}

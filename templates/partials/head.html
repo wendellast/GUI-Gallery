@@ -8,7 +8,10 @@
 {% else %}
 <link rel="stylesheet" href="{% static "assets/css/background.css" %}">
 <link rel="stylesheet" href="{% static 'assets/css/music.css' %}">
-<link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+<link rel="stylesheet" href="{% static 'assets/css/newImage.css' %}">
 <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css'>
 
+{% endif %}
+{% if request.path == "/" %}
+<link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
 {% endif %}

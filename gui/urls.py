@@ -5,5 +5,6 @@ from . import views
 app_name = "gui"
 
 urlpatterns = [
-    path("", views.PagePetIndex.as_view(), name="index"), 
+    path("", views.PageIndex.as_view(), name="index"), 
+    path("upload-image/", views.PageNewBook.as_view(), name="update-image")
     ]

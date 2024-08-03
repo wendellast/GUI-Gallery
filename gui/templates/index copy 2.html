@@ -1,0 +1,216 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<div class="background">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+</div>
+<section>
+    <div class="wrapper">
+        <div class="images">
+            <div class="center">
+                <h1>Guinever</h1>
+                <h2>Gallery</h2>
+                <a href="#">
+                    <button id="entrar"><span>Entrar</span></button>
+                </a>
+                <div class="music-container" id="music-container">
+                    <div class="music-info">
+                        <h2 id="title" class="title"></h2>
+                        <div class="progress-container" id="progress-container">
+                            <div class="progress" id="progress"></div>
+                        </div>
+                    </div>
+                    <audio src="static/assets/music/stellar.mp3" id="audio"></audio>
+                    <div class="img-container">
+                        <img src="https://github.com/bradtraversy/vanillawebprojects/blob/master/music-player/static/assets/images/summer.jpg?raw=true"
+                            alt="music-cover" id="cover" />
+                    </div>
+                    <div class="navigation">
+                        <button id="prev" class="action-btn">
+                            <i class="fas fa-backward"></i>
+                        </button>
+                        <button id="play" class="action-btn action-btn-big">
+                            <i class="fas fa-play"></i>
+                        </button>
+                        <button id="next" class="action-btn">
+                            <i class="fas fa-forward"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+                {% with image_list=guigallery %}
+                {% if image_list %}
+                    <!-- Primeiro bloco com 1 imagem -->
+                    <div class="column">
+                        <div class="image">
+                            <img src="{{ image_list.0.image.url }}" alt="capa" />
+                        </div>
+                    </div>
+            
+                    <!-- Segundo bloco com 2 imagens -->
+                    {% if image_list|length > 1 %}
+                        <div class="column">
+                            <div class="image">
+                                <img src="{{ image_list.1.image.url }}" alt="capa" />
+                            </div>
+                            {% if image_list|length > 2 %}
+                                <div class="image">
+                                    <img src="{{ image_list.2.image.url }}" alt="capa" />
+                                </div>
+                            {% endif %}
+                        </div>
+                    {% endif %}
+            
+                    <!-- Terceiro bloco com 3 imagens -->
+                    {% if image_list|length > 3 %}
+                        <div class="column">
+                            <div class="image">
+                                <img src="{{ image_list.3.image.url }}" alt="capa" />
+                            </div>
+                            {% if image_list|length > 4 %}
+                                <div class="image">
+                                    <img src="{{ image_list.4.image.url }}" alt="capa" />
+                                </div>
+                            {% endif %}
+                            {% if image_list|length > 5 %}
+                                <div class="image">
+                                    <img src="{{ image_list.5.image.url }}" alt="capa" />
+                                </div>
+                            {% endif %}
+                        </div>
+                    {% endif %}
+            
+                    <!-- Quarto bloco com 3 imagens -->
+                    {% if image_list|length > 6 %}
+                        <div class="column">
+                            <div class="image">
+                                <img src="{{ image_list.6.image.url }}" alt="capa" />
+                            </div>
+                            {% if image_list|length > 7 %}
+                                <div class="image">
+                                    <img src="{{ image_list.7.image.url }}" alt="capa" />
+                                </div>
+                            {% endif %}
+                            {% if image_list|length > 8 %}
+                                <div class="image">
+                                    <img src="{{ image_list.8.image.url }}" alt="capa" />
+                                </div>
+                            {% endif %}
+                        </div>
+                    {% endif %}
+            
+                    <!-- Quinto bloco com 1 imagem e 1 espaço -->
+                    {% if image_list|length > 9 %}
+                        <div class="column">
+                            <div class="image">
+                                <img src="{{ image_list.9.image.url }}" alt="capa" />
+                            </div>
+                            <div class="space"></div>
+                            {% if image_list|length > 10 %}
+                                <div class="image">
+                                    <img src="{{ image_list.10.image.url }}" alt="capa" />
+                                </div>
+                            {% endif %}
+                        </div>
+                    {% endif %}
+            
+                    <!-- Sexto bloco com 1 imagem e 1 espaço -->
+                    {% if image_list|length > 11 %}
+                        <div class="column">
+                            <div class="image">
+                                <img src="{{ image_list.11.image.url }}" alt="capa" />
+                            </div>
+                            <div class="space"></div>
+                            {% if image_list|length > 12 %}
+                                <div class="image">
+                                    <img src="{{ image_list.12.image.url }}" alt="capa" />
+                                </div>
+                            {% endif %}
+                        </div>
+                    {% endif %}
+            
+                    <!-- Sétimo bloco com 3 imagens -->
+                    {% if image_list|length > 13 %}
+                        <div class="column">
+                            <div class="image">
+                                <img src="{{ image_list.13.image.url }}" alt="capa" />
+                            </div>
+                            {% if image_list|length > 14 %}
+                                <div class="image">
+                                    <img src="{{ image_list.14.image.url }}" alt="capa" />
+                                </div>
+                            {% endif %}
+                            {% if image_list|length > 15 %}
+                                <div class="image">
+                                    <img src="{{ image_list.15.image.url }}" alt="capa" />
+                                </div>
+                            {% endif %}
+                        </div>
+                    {% endif %}
+            
+                    <!-- Oitavo bloco com 3 imagens -->
+                    {% if image_list|length > 16 %}
+                        <div class="column">
+                            <div class="image">
+                                <img src="{{ image_list.16.image.url }}" alt="capa" />
+                            </div>
+                            {% if image_list|length > 17 %}
+                                <div class="image">
+                                    <img src="{{ image_list.17.image.url }}" alt="capa" />
+                                </div>
+                            {% endif %}
+                            {% if image_list|length > 18 %}
+                                <div class="image">
+                                    <img src="{{ image_list.18.image.url }}" alt="capa" />
+                                </div>
+                            {% endif %}
+                        </div>
+                    {% endif %}
+            
+                    <!-- Nono bloco com 2 imagens -->
+                    {% if image_list|length > 19 %}
+                        <div class="column">
+                            <div class="image">
+                                <img src="{{ image_list.19.image.url }}" alt="capa" />
+                            </div>
+                            {% if image_list|length > 20 %}
+                                <div class="image">
+                                    <img src="{{ image_list.20.image.url }}" alt="capa" />
+                                </div>
+                            {% endif %}
+                        </div>
+                    {% endif %}
+            
+                    <!-- Décimo bloco com 1 imagem -->
+                    {% if image_list|length > 21 %}
+                        <div class="column">
+                            <div class="image">
+                                <img src="{{ image_list.21.image.url }}" alt="capa" />
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endif %}
+                {% endwith %}
+        </div>
+    </div>
+</section>
+{% endblock content %}

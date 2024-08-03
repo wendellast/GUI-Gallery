@@ -5,12 +5,22 @@ from django.urls import reverse_lazy
 from django.views.generic import CreateView
 from django.views.generic.list import ListView
 from . import models
+from django.conf import settings
+import os
 
-# Create your views here.
-class PagePetIndex(ListView):
+class PageIndex(ListView):
     model = models.GuiGallery
     template_name = "index.html"
     context_object_name = "guigallery"
+
+    def get_queryset(self):
+        user = self.request.user
+        if user.is_authenticated:
+            queryset = models.GuiGallery.objects.filter(user=user)
+        else:
+            return reverse_lazy("gui:index")
+        return queryset
+
 
 
 class PageNewBook(LoginRequiredMixin, CreateView):
