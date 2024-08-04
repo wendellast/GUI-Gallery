@@ -80,7 +80,7 @@
             </div>
         </div>
         
-
+        {% if guigallery %}
             {% with image_list=guigallery %}
             {% if image_list %}
                 <!-- Primeiro bloco com 1 imagem -->
@@ -234,7 +234,7 @@
                 {% endif %}
             {% endif %}
             {% endwith %}
-            
+        {% endif %}
           
         </div>
     </div>

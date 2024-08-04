@@ -6,7 +6,12 @@
     <div class="top_section">
 		<h5>Audio Player&nbsp;&nbsp;<i class="fa fa-headphones" aria-hidden="true"></i></h5>
 	</div>
-	<button>Adiciona musicas</button>
+	<form id="newBookForm" action="" method="POST" enctype="multipart/form-data">
+		{% csrf_token %}
+		<label for="imageInp">Selecione a Música</label>
+		<input type="file" required id="imageInp" name="music">
+		<button>Salva</button>
+	</form>
 
 
   <div class="tracks">
