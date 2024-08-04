@@ -1,4 +1,4 @@
-var images = document.querySelector(".images");
+var images = document.querySelector(".wrapper");
 
 var isDown = false;
 var isTouch = false;
