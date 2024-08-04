@@ -31,10 +31,17 @@
                 <h1>Guinever</h1>
                 <h2>Gallery</h2>
                 <div>
-                <a href="#">
-                    <button id="entrar"><span>Entra</span></button>
-                </a>
-                <a href="#">
+                    {% if request.user.is_authenticated %}
+                        <a href="{% url "userauths:logout" %}">
+                            <button id="entrar"><span>Sair</span></button>
+                        </a>
+                    {% else %}
+                        <a href="{% url "userauths:login" %}">
+                            <button id="entrar"><span>Entra</span></button>
+                        </a>
+                    {% endif %}
+                        
+                <a href="{% url "gui:update-image" %}">
                     <button id="entrar"><span>Adiciona Images</span></button>
                 </a>
                 <a href="#">
@@ -51,9 +58,11 @@
                             <div class="progress" id="progress"></div>
                         </div>
                     </div>
-                    <audio src="static/assets/music/stellar.mp3" id="audio"></audio>
+                    
+                    <audio src="{% static "assets/music/stellar.mp3" %} " id="audio"></audio>
                     <div class="img-container">
-                        <img src="https://github.com/bradtraversy/vanillawebprojects/blob/master/music-player/static/assets/images/summer.jpg?raw=true"
+                        
+                        <img src="https://github.com/wendellast/GUI-Gallery/blob/main/templates/static/assets/img/Fall-down.jpg?raw=true"
                             alt="music-cover" id="cover" />
                     </div>
                     <div class="navigation">

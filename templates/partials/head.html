@@ -2,6 +2,7 @@
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 {% if  request.path == "/user/login/" or   request.path == "/user/register/"%}
 <link rel="stylesheet" href="{% static 'assets/css/login.css' %}">
 <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700" rel="stylesheet">
@@ -14,4 +15,10 @@
 {% endif %}
 {% if request.path == "/" %}
 <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+{% endif %}
+
+{% if request.path == "/upload-music/" %}
+<link rel="stylesheet" href="{% static "assets/css/music-player.css" %}   ">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 {% endif %}

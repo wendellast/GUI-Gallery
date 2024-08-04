@@ -9,7 +9,7 @@ const progressContainer = document.getElementById("progress-container");
 const title = document.getElementById("title");
 const cover = document.getElementById("cover");
 
-const songs = ["stellar", "Fall-down"];
+const songs = [ "Fall-down", "stellar"];
 let songIndex = 1;
 
 function getSongTitle(song) {
@@ -18,8 +18,8 @@ function getSongTitle(song) {
 
 function loadSong(song) {
   title.innerText = getSongTitle(song);
-  audio.src = `https://github.com/wendellast/GUI-Gallery/blob/main/static/assets/music/${song}.mp3?raw=true`;
-  cover.src = `https://github.com/wendellast/GUI-Gallery/blob/main/static/assets/img/${song}.jpg?raw=true`;
+  audio.src = `https://github.com/wendellast/GUI-Gallery/blob/main/templates/static/assets/music/${song}.mp3?raw=true`;
+  cover.src = `https://github.com/wendellast/GUI-Gallery/blob/main/templates/static/assets/img/${song}.jpg?raw=true`;
 }
 
 function playSong() {

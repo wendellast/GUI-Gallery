@@ -5,8 +5,6 @@ from django.urls import reverse_lazy
 from django.views.generic import CreateView
 from django.views.generic.list import ListView
 from . import models
-from django.conf import settings
-import os
 
 class PageIndex(ListView):
     model = models.GuiGallery
@@ -28,6 +26,16 @@ class PageNewBook(LoginRequiredMixin, CreateView):
     fields = ["title", "description", "image"]
     success_url = reverse_lazy("gui:index")
     template_name = "createImage.html"
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super(PageNewBook, self).form_valid(form)
+    
+class PageNewMusic(LoginRequiredMixin, CreateView):
+    model = models.GuiGallery
+    fields = ["title", "description", "image"]
+    success_url = reverse_lazy("gui:index")
+    template_name = "createMusic.html"
 
     def form_valid(self, form):
         form.instance.user = self.request.user

@@ -6,22 +6,24 @@
                 <form id="newBookForm" action="" method="POST" enctype="multipart/form-data">
                     {% csrf_token %}
                     <label for="titleInp">Título:</label>
-                    <input type="text" id="titleInp" name="title" placeholder="Titulo" required>
+                    <input type="text" id="titleInp" name="title" placeholder="Titulo" >
 
                     <label for="descriptionInp">Descrição:</label>
                     <textarea id="descriptionInp" name="description"
-                    placeholder="Descricao" required rows="4" style="resize: vertical;"></textarea>
+                    placeholder="Descricao"  rows="4" style="resize: vertical;"></textarea>
 
                     <label for="imageInp">Imagem</label>
-                    <input type="file" id="imageInp" name="image">
+                    <input type="file" required id="imageInp" name="image">
 
                     <div id="addBtnsNavegation">
                         <button type="submit" id="addBook">Adicionar</button>
-                        <button id="cancelBook">Cancelar</button>
+                        <a href="{% url "gui:index" %}">
+                            Cancelar
+                        </a>
                     </div>
                 </form>
             </div>
-
+            
         </div>
         
 {% endblock content %}

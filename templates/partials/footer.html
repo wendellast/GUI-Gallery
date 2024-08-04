@@ -1,5 +1,9 @@
 {% load static %}
-<script src="{% static "assets/js/script.js" %}"></script>
+<script src="{% static "assets/js/music.js" %}"></script>
 <script src="{% static "assets/js/script.js" %}"></script>
 <script src="{% static "assets/js/login.js" %}"></script>
 
+
+{% if request.path == "/upload-music/" %}
+<script src="{% static "assets/js/music-player.js" %}"></script>
+{% endif %}
