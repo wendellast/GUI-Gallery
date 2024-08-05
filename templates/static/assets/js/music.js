@@ -1,4 +1,3 @@
-
 const musicContainer = document.getElementById("music-container");
 const playButton = document.getElementById("play");
 const prevButton = document.getElementById("prev");
@@ -9,17 +8,16 @@ const progressContainer = document.getElementById("progress-container");
 const title = document.getElementById("title");
 const cover = document.getElementById("cover");
 
-const songs = [ "Fall-down", "stellar"];
-let songIndex = 1;
+const songs = []; // Initialize as an empty array
+let songIndex = 0;
 
 function getSongTitle(song) {
-  return song.charAt(0).toUpperCase() + song.slice(1);
+  return song.title.charAt(0).toUpperCase() + song.title.slice(1); // Adjusted to use song.title
 }
 
 function loadSong(song) {
   title.innerText = getSongTitle(song);
-  audio.src = `https://github.com/wendellast/GUI-Gallery/blob/main/templates/static/assets/music/${song}.mp3?raw=true`;
-  cover.src = `https://github.com/wendellast/GUI-Gallery/blob/main/templates/static/assets/img/${song}.jpg?raw=true`;
+  audio.src = song.audio_url; // URL from the API
 }
 
 function playSong() {
@@ -63,6 +61,20 @@ function setProgress(e) {
   audio.currentTime = (clickX / width) * duration;
 }
 
+// Fetch songs data from Django
+async function fetchSongs() {
+  try {
+    const response = await fetch('/api/music/');
+    const data = await response.json();
+    songs.push(...data);
+    if (songs.length > 0) {
+      loadSong(songs[songIndex]);
+    }
+  } catch (error) {
+    console.error('Error fetching music data:', error);
+  }
+}
+
 // Event Listeners
 playButton.addEventListener("click", () => {
   const isPlaying = musicContainer.classList.contains("play");
@@ -78,4 +90,4 @@ progressContainer.addEventListener("click", setProgress);
 audio.addEventListener("ended", nextSong);
 
 // Init
-loadSong(songs[songIndex]);
+fetchSongs(); // Fetch songs on page load
