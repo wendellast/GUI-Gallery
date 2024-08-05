@@ -1,0 +1,25 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+ 
+
+  <h2>Lista de Músicas</h2>
+  <ul>
+    {% for music in music_list %}
+      <li>
+        {{ music.name }}
+        <form method="post" action="{% url 'gui:delete-music' music.id %}" style="display:inline;" onsubmit="return confirmDeletion();">
+          {% csrf_token %}
+          <button type="submit">Excluir</button>
+        </form>
+      </li>
+    {% endfor %}
+  </ul>
+
+  <script>
+    function confirmDeletion() {
+      return confirm("Tem certeza de que deseja excluir esta música?");
+    }
+  </script>
+{% endblock %}

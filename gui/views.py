@@ -2,7 +2,7 @@ from django.views.generic.list import ListView
 from . import models
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
-from django.views.generic import CreateView
+from django.views.generic import CreateView, DeleteView
 from django.views.generic.list import ListView
 from . import models
 
@@ -39,3 +39,20 @@ class PageNewMusic(LoginRequiredMixin, CreateView):
     form_class = MusicForm
     template_name = 'createMusic.html'
     success_url = reverse_lazy('gui:update-music')  
+
+    
+    
+    def form_valid(self, form):
+        form.instance.user = self.request.user  # Define o usuário ao salvar o formulário
+        return super().form_valid(form)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['user_music'] = models.Music.objects.filter(user=self.request.user)
+        return context
+   
+    
+
+class MusicDeleteView(LoginRequiredMixin, DeleteView):
+    model = models.Music
+    success_url = reverse_lazy('gui:update-music')

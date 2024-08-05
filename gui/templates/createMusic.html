@@ -4,97 +4,98 @@
 <div class="main">
     <!-- top section -->
     <div class="top_section">
-		<h5>Audio Player&nbsp;&nbsp;<i class="fa fa-headphones" aria-hidden="true"></i></h5>
-	</div>
-	<form id="newBookForm" action="" method="POST" enctype="multipart/form-data">
-		{% csrf_token %}
-		<label for="imageInp">Selecione a Música</label>
-		<input type="file" required  name="audio_file">
-		<button>Salva</button>
-	</form>
-
-
-  <div class="tracks">
-    
-    <!-- list of song will add here from 'song_list.js' file -->
-
-    <!-- small music player -->
-    <div class="small_music_player">
-    	<div class="s_player_img">
-    		<div class="playing_img">
-    			<img src="images/1.jpg" alt="">
-    		</div>
-    	
-           <!-- wave animation part -->
-    	   <div class="wave_animation">
-			 <li></li>
-			 <li></li>
-			 <li></li>
-			 <li></li>
-			 <li></li>
-	       </div>
-	    </div>
-
-    	<div class="song_detail">
-    		<p id="song_name">Make Me Move</p>
-    		<p id="artist_name">NoCopyrightSounds [NCS]</p>
-		
-    	</div>
-    	<i class="fa fa-chevron-up" aria-hidden="true" id="up_player"></i>
+        <h5>Audio Player&nbsp;&nbsp;<i class="fa fa-headphones" aria-hidden="true"></i></h5>
     </div>
+    <form id="newBookForm" action="" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label for="imageInp">Selecione a Música</label>
+        <input type="file" required name="audio_file">
+        <button>Salva</button>
+    </form>
 
+    <div class="tracks">
+	{% for music in user_music %}
+        <div class="song" id="song_{{ forloop.counter }}">
+            <div class="img">
+                <img src="{% static 'assets/img/capa.png' %}" />
+            </div>
+            <div class="more">
+                <audio src="{{ music.audio_file.url }}"  id="music"></audio>
+                <div class="song_info">
+                    <p class="playerplay" id="title">{{ music.audio_file.name|slice:'24:'|slice:':-4' }}</p>
+                </div>
+				<form action="{% url 'gui:delete-music' music.id %}" method="post" style="display:inline;">
+                    {% csrf_token %}
+                    <button class="play_btn" type="submit" onclick="confirmDelete(event, this.closest('form'))">X</button>
+                </form>
 
-    <!--  popup music player part -->
-    <div class="popup_music_player">
-         <div class="top">
-    	    <p>Now Playing</p>
+            </div>
+        </div>
+
+        <!-- small music player -->
+        <div class="small_music_player">
+            <div class="s_player_img">
+                <div class="playing_img">
+					<img src="{% static 'assets/img/capa.png' %}" />
+                </div>
+                <!-- wave animation part -->
+                <div class="wave_animation">
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </div>
+            </div>
+
+            <div class="song_detail">
+                <p id="artist_name">NoCopyrightSounds [NCS]</p>
+            </div>
+            <i class="fa fa-chevron-up" aria-hidden="true" id="up_player"></i>
+        </div>
+		{% endfor %}
+
+        <!-- popup music player part -->
+        <div class="popup_music_player">
+            <div class="top">
+                <i class="fa fa-chevron-down" aria-hidden="true" id="down_player"></i>
+            </div>
+            <div class="song_img">
+				<img src="{% static 'assets/img/capa.png' %}" />
+            </div>
 			
-    	    <i class="fa fa-chevron-down" aria-hidden="true" id="down_player"></i>
+            <!-- Assuming you want to display the second item in the list for example -->
+          
+            <div class="song_description">
+				
+            </div>
+            
+
+            <div class="controlls">
+                <div class="progress_part">
+                    <input type="range" min="0" max="100" value="0" id="slider" onchange="change_duration()">
+                    <div class="durations">
+                        <p id="current_duration">0:00</p>
+                        <p id="total_duration">0:00</p>
+                    </div>
+                </div>
+
+                <!-- controlls btn's -->
+                <div class="controlls_btns">
+                    <button id="backward_btn"><i class="fa fa-step-backward" aria-hidden="true"></i></button>
+                    <button id="play_pause_btn"><i class="fa fa-play" aria-hidden="true"></i></button>
+                    <button id="forward_btn"><i class="fa fa-step-forward" aria-hidden="true"></i></button>
+                </div>
+            </div>
         </div>
-        
-       <div class="song_img">
-          <img src="images/1.jpg" alt="">
-       </div>
-
-       <div class="song_description">
-          <h3 id="current_track_name">Make Me Move</h3>
-          <p id="current_singer_name">NoCopyrightSounds [NCS]</p>
-       </div>
-
-       <div class="controlls">
-    	 <div class="progress_part">
-    		<input type="range" min="0" max="100" value="0" id="slider" onchange="change_duration()">
-    		<div class="durations">
-    			<p id="current_duration">0:00</p>
-    		    <p id="total_duration">0:00</p>
-    		</div>
-
-       </div>
-    		
-        <!-- controlls btn's -->
-        <div class="controlls_btns">
-			<button id="backward_btn"><i class="fa fa-step-backward" aria-hidden="true"></i></button>
-			<button id="play_pause_btn"><i class="fa fa-play" aria-hidden="true"></i></button>
-			<button id="forward_btn"><i class="fa fa-step-forward" aria-hidden="true"></i></button>
-        </div>
-      </div>
+		
     </div>
-	<div class="song">
-		<div class="img">
-		<img src="#"/>
-		</div>
-		<div class="more">
-		<audio src="../templates/static/assets/music/stellar.mp3" id="music"></audio>
-		<div class="song_info">
-		   <p id="title">wwewewewewee</p>
-		   <p>we</p>
-		</div>
-		<button id="play_btn"><i class="fa fa-angle-right" aria-hidden="true"></i></button>
-		<button id="play_btn">X></i></button>
-		</div>
-	  </div>
-	
-
-</div>
-
+	<script>
+        function confirmDelete(event, form) {
+            event.preventDefault(); 
+            if (confirm('Você tem certeza que deseja excluir esta música?')) {
+                form.submit(); 
+            }
+        }
+    </script>
 {% endblock content %}
