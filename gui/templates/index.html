@@ -28,7 +28,11 @@
         <div class="images">
             <div class="seper">
             <div class="center">
+                {% if request.user.is_authenticated %}
+                <h1>{{username}}</h1>
+                {% else %}
                 <h1>Guinever</h1>
+                {% endif %}
                 <h2>Gallery</h2>
                 <div>
                     {% if request.user.is_authenticated %}
@@ -44,7 +48,7 @@
                 <a href="{% url "gui:update-image" %}">
                     <button id="entrar"><span>Adiciona Images</span></button>
                 </a>
-                <a href="#">
+                <a href="{% url "gui:update-music" %}">
                     <button id="entrar"><span>Adiciona Musicas</span></button>
                 </a>
                 <a href="#">
@@ -318,7 +322,7 @@
                     {% if image_list|length > 21 %}
                         <div class="column">
                             <div class="image">
-                                <img src="{{ image_list.21.image.url }}" alt="capa" />
+                                <img src="{{ image_list.21.image.url }}" alt="" />
                             </div>
                         </div>
                     {% endif %}

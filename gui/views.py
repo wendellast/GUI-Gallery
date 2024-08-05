@@ -12,15 +12,20 @@ class PageIndex(ListView):
     model = models.GuiGallery
     template_name = "index.html"
     context_object_name = "guigallery"
-
+    
     def get_queryset(self):
         user = self.request.user
         if user.is_authenticated:
-            queryset = models.GuiGallery.objects.filter(user=user)
+            return models.GuiGallery.objects.filter(user=user)
         else:
-            return reverse_lazy("gui:index")
-        return queryset
+            return models.GuiGallery.objects.none()
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        user = self.request.user
+        if user.is_authenticated:
+            context['username'] = user.username
+        return context
 
 
 class PageNewBook(LoginRequiredMixin, CreateView):
