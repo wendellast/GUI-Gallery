@@ -15,8 +15,7 @@ class GuiGallery(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
 class Music(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, null=False, blank=False)
     gallery = models.ForeignKey(GuiGallery, on_delete=models.CASCADE, related_name='music', null=True, blank=True)
-    audio_file = models.FileField(upload_to="music/%Y/%m/", blank=False, null=False)
+    audio_file = models.FileField(upload_to="galleryMusic/%Y/%m/", blank=False, null=False)
     created_at = models.DateField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

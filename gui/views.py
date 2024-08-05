@@ -6,6 +6,8 @@ from django.views.generic import CreateView
 from django.views.generic.list import ListView
 from . import models
 
+from . form import MusicForm
+
 class PageIndex(ListView):
     model = models.GuiGallery
     template_name = "index.html"
@@ -33,8 +35,7 @@ class PageNewBook(LoginRequiredMixin, CreateView):
     
     
 class PageNewMusic(LoginRequiredMixin, CreateView):
-    class MusicCreateView(CreateView):
-    model = Music
+    model = models.Music
     form_class = MusicForm
-    template_name = 'music/music_form.html'
-    success_url = reverse_lazy('music_success')  
+    template_name = 'createMusic.html'
+    success_url = reverse_lazy('gui:update-music')  
