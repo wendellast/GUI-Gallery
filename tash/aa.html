@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Imagem com Informações</title>
+    <style>
+        /* Estilo para a div de informações */
+        .info-overlay {
+            display: none; /* Começa oculta por padrão */
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.8); /* Inicialmente reduzida */
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000; /* Garante que esteja sobreposta */
+            opacity: 0; /* Começa invisível */
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        .info-overlay.show {
+            display: block;
+            opacity: 1; /* Torna visível */
+            transform: translate(-50%, -50%) scale(1); /* Expande para o tamanho normal */
+        }
+
+        /* Estilo para o botão de fechamento */
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #333;
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        /* Estilo para a imagem e container */
+        .image-container {
+            position: relative;
+            display: inline-block;
+        }
+
+        .image img {
+            cursor: pointer;
+            width: 100%;
+            max-width: 500px; /* Ajuste conforme necessário */
+        }
+    </style>
+</head>
+<body>
+    <!-- Estrutura básica -->
+    <div class="image-container">
+        <div class="image">
+            <img src="{% static 'assets/img/art/image7.jpg' %}" alt="Descrição da imagem">
+        </div>
+        <div class="info-overlay" id="infoOverlay">
+            <button class="close-btn" id="closeBtn">&times;</button>
+            <!-- Conteúdo das informações da imagem aqui -->
+            <h2>Título da Imagem</h2>
+            <p>Descrição da imagem.</p>
+        </div>
+    </div>
+
+    <script>
+        // Seleciona a imagem, a div de informações e o botão de fechamento
+        const image = document.querySelector('.image img');
+        const infoOverlay = document.getElementById('infoOverlay');
+        const closeBtn = document.getElementById('closeBtn');
+
+        // Adiciona um evento de clique na imagem
+        image.addEventListener('click', function() {
+            // Exibe a div de informações com animação ao clicar na imagem
+            infoOverlay.classList.add('show');
+        });
+
+        // Adiciona um evento de clique no botão de fechamento
+        closeBtn.addEventListener('click', function() {
+            // Esconde a div de informações com animação ao clicar no botão
+            infoOverlay.classList.remove('show');
+        });
+
+        // Opcional: Fecha a div ao clicar fora dela
+        window.addEventListener('click', function(event) {
+            if (event.target === infoOverlay) {
+                infoOverlay.classList.remove('show');
+            }
+        });
+    </script>
+</body>
+</html>

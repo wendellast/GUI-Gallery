@@ -1,14 +1,21 @@
 var images = document.querySelector(".wrapper");
 
-var isDown = false;
+
 var isTouch = false;
-var prevX = 0;
-var prevY = 0;
+var prevX = 50;
+var prevY = 60;
 var currentX = images.offsetWidth / -2;
 var currentY = images.offsetHeight / -2;
 
 var currentXtmp = 0;
 var currentYtmp = 0;
+
+var images = document.querySelector(".images");
+
+var isDown = false;
+var startX;
+var scrollLeft;
+
 
 var ondown = (e) => {
     prevX = e.clientX;
@@ -45,31 +52,6 @@ this.onmousedown = ondown;
 this.onmousemove = onmove;
 this.onmouseup = onup;
 
-var images = document.querySelector(".images");
 
-var isDown = false;
-var startX;
-var scrollLeft;
 
-images.addEventListener('mousedown', function(e) {
-    isDown = true;
-    startX = e.pageX - images.offsetLeft;
-    scrollLeft = images.scrollLeft;
-});
-
-images.addEventListener('mouseleave', function() {
-    isDown = false;
-});
-
-images.addEventListener('mouseup', function() {
-    isDown = false;
-});
-
-images.addEventListener('mousemove', function(e) {
-    if(!isDown) return;
-    e.preventDefault();
-    var x = e.pageX - images.offsetLeft;
-    var walk = (x - startX) * 3; // Adjust scrolling speed here
-    images.scrollLeft = scrollLeft - walk;
-});
 

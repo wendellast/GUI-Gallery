@@ -83,11 +83,18 @@
                 </div>
             </div>
         </div>
+       
         {% if not request.user.is_authenticated %}
+
         <div class="column">
             <div class="image">
                 <img src="{% static 'assets/img/art/image1.jpg' %}" alt="">
             </div>
+        </div>
+        <div id="info-popup" class="info-popup">
+            <span id="info-text"></span>
+            <img src="{{ image_list.0.image.url }}" alt="capa" />
+            <button id="close-info">Fechar</button>
         </div>
         <div class="column">
             <div class="image">
@@ -177,6 +184,7 @@
             {% if guigallery %}
                 {% with image_list=guigallery %}
                 {% if image_list %}
+               
                     <!-- Primeiro bloco com 1 imagem -->
                     <div class="column">
                         <div class="image">
@@ -332,5 +340,7 @@
       {% endif %}
         </div>
     </div>
+   
+    
 </section>
 {% endblock content %}
